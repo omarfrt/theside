@@ -114,25 +114,39 @@ function initResize(e) {
 }
 
 function searchSite(query) {
-    let iframe = document.createElement('iframe');
-    iframe.src = query;
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    const sideMargin = document.getElementById('side-margin-container');
-    sideMargin.appendChild(iframe);
-  
-    // Send message to background script to handle CORS for this URL
-    chrome.runtime.sendMessage(
-      { action: "addUrlToMonitor", urlPattern: query },
-      function(response) {
-        if (response && response.success) {
-          console.log('CORS handling set up for:', query);
-        } else {
-          console.error('Failed to set up CORS handling for:', query);
-        }
-      }
-    );
-  }
+  // Perform your logic to fetch and render the site content here
+  // For example, you can use fetch() to fetch the website content
+  // and then render it inside the side margin container
+  // Make sure to handle any CORS issues or security concerns
+// fetch(query)
+//     .then(response => response.text())
+//     .then(html => {
+//         const sideMargin = document.getElementById('side-margin-container');
+//         sideMargin.innerHTML = html;
+//     })
+//     .catch(error => {
+//         console.error('Error fetching site:', error);
+//     });
+    
+// chrome.runtime.sendMessage(
+//     {message: "fetchUrl", url: query},
+//     function(response) {
+//       if (response.success) {
+//         const sideMargin = document.getElementById('side-margin-container');
+//         sideMargin.innerHTML = response.data;
+//         console.log(response.data);
+//       } else {
+//         console.error(response.data);
+//       }
+//     }
+//   );
+let iframe = document.createElement('iframe');
+iframe.src = query;
+iframe.style.width = '100%';
+iframe.style.height = '100%';
+const sideMargin = document.getElementById('side-margin-container');
+sideMargin.appendChild(iframe);
+}
 
 createSideMargin();
 createButton();
