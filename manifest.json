@@ -3,7 +3,7 @@
   "name": "SideMargins",
   "description": "Adds a side margin with a search input to any site.",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting", "webRequest", "webRequestBlocking", "storage"],
+  "permissions": ["activeTab", "scripting", "webRequest", "storage"],
   "background": {
     "service_worker": "background.js"
   },
